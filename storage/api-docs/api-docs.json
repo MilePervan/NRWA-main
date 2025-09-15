@@ -1,0 +1,605 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "NRWA API Documentation",
+        "description": "REST API dokumentacija za NRWA projekt",
+        "contact": {
+            "email": "support@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/api/v1/dispatchers": {
+            "get": {
+                "tags": [
+                    "Dispatchers"
+                ],
+                "summary": "Get list of dispatchers",
+                "operationId": "d193b74eccd768ead409d2eda396c439",
+                "responses": {
+                    "200": {
+                        "description": "List of dispatchers"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Dispatchers"
+                ],
+                "summary": "Create new dispatcher",
+                "operationId": "6ddf4e52dd56f1dd6f4a5ea2ad147f60",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Ivan Horvat"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+38761234567"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Dispatcher created successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/dispatchers/{id}": {
+            "get": {
+                "tags": [
+                    "Dispatchers"
+                ],
+                "summary": "Get a single dispatcher",
+                "operationId": "98a5a5efc0634082c54e0c20ec47bc5b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dispatcher data"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Dispatchers"
+                ],
+                "summary": "Update a dispatcher",
+                "operationId": "ebe86ec7b2f16b1d7b30f4a879b304ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Ivan Horvat Updated"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+38761234567"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Dispatcher updated successfully"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Dispatchers"
+                ],
+                "summary": "Delete a dispatcher",
+                "operationId": "536ffc7454ccb7340f61f88ec6fddf67",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Dispatcher deleted successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/locations": {
+            "get": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "Get list of locations",
+                "operationId": "42fc30e97773855c314df24aee584ce5",
+                "responses": {
+                    "200": {
+                        "description": "List of locations"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "Create new location",
+                "operationId": "32ee553d585d8b4295d1721b072d79af",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "address"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Konzum Mostar"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Mostar, BiH"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Location created successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/locations/{id}": {
+            "get": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "Get a single location",
+                "operationId": "3356f213a09d3820c976ab47617b23c1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Location data"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "Update a location",
+                "operationId": "4b8dc7912804c3b07e6cb9c5396860c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Konzum Mostar Updated"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Mostar, BiH"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Location updated successfully"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "Delete a location",
+                "operationId": "fce9f4bc941c78a1dbecefc9529571d4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Location deleted successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/managers": {
+            "get": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Get list of managers",
+                "operationId": "a25ce70021d9694646a7a1e8e43c499d",
+                "responses": {
+                    "200": {
+                        "description": "List of managers"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Create new manager",
+                "operationId": "d79084b9cca22f2c9c76518ecd00cc81",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "location_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Marko Marković"
+                                    },
+                                    "location_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Manager created successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/managers/{id}": {
+            "get": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Get a single manager",
+                "operationId": "7f69738ed4059387eb1784d45326ad41",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Manager data"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Update a manager",
+                "operationId": "9fcd9ea35b307b974b768f48f5b40611",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Marko Marković Updated"
+                                    },
+                                    "location_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Manager updated successfully"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Delete a manager",
+                "operationId": "7a932064a8138dce3d1c5d9cc77e3c4f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Manager deleted successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of users",
+                "operationId": "f6c753d1e15542002c4661aae82e9774",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a new user",
+                "operationId": "2c5490944ce1758b93f4fccb9481c144",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "role",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "enum": [
+                                            "manager",
+                                            "dispatcher",
+                                            "client"
+                                        ]
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User created successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a single user",
+                "operationId": "bf991232df7a48b9af77794642edd2cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update a user",
+                "operationId": "b022eeb040b4f0291eb981b860dd48af",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "enum": [
+                                            "manager",
+                                            "dispatcher",
+                                            "client"
+                                        ]
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User updated successfully"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete a user",
+                "operationId": "cb3bdaa7fdb0c66ad90f8e32db47a2d4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "User deleted successfully"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Dispatchers",
+            "description": "Operacije nad dispečerima"
+        },
+        {
+            "name": "Locations",
+            "description": "Operacije nad lokacijama"
+        },
+        {
+            "name": "Managers",
+            "description": "Operacije nad menadžerima"
+        },
+        {
+            "name": "Users",
+            "description": "Operacije nad korisnicima"
+        }
+    ]
+}
