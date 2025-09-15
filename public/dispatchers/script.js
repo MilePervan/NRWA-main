@@ -42,7 +42,7 @@ function populateTable(filtered = null) {
     });
 }
 
-// Modal
+
 function openAddModal() {
     editingId = null;
     $('#modalTitle').text('Add Dispatcher');

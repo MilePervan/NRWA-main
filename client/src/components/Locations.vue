@@ -2,13 +2,13 @@
   <div class="container">
     <h2>Locations</h2>
 
-    <!-- Dodavanje nove lokacije -->
+  
     <form @submit.prevent="addLocation" class="form">
       <input v-model="newLocation.name" placeholder="Location Name" required />
       <button type="submit">Add</button>
     </form>
 
-    <!-- Tablica lokacija -->
+  
     <table>
       <thead>
         <tr>

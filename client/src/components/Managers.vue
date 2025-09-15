@@ -2,7 +2,6 @@
   <div class="container">
     <h2>Managers</h2>
 
-    <!-- Dodavanje novog managera -->
     <form @submit.prevent="addManager" class="form">
       <input v-model="newManager.name" placeholder="Name" required />
       <select v-model="newManager.location_id" required>
@@ -14,7 +13,6 @@
       <button type="submit">Add</button>
     </form>
 
-    <!-- Tablica managera -->
     <table>
       <thead>
         <tr>

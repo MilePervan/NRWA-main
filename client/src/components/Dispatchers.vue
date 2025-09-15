@@ -2,14 +2,13 @@
   <div class="container">
     <h2>Dispatchers</h2>
 
-    <!-- Dodavanje novog dispatchera -->
     <form @submit.prevent="addDispatcher" class="form">
       <input v-model="newDispatcher.name" placeholder="Name" required />
       <input v-model="newDispatcher.phone" placeholder="Phone" required />
       <button type="submit">Add</button>
     </form>
 
-    <!-- Tablica dispatchera -->
+
     <table>
       <thead>
         <tr>

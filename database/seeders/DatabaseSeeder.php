@@ -61,15 +61,13 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('Seeded 4 users with roles: guest, reader, editor, admin.');
 
-        // Kreiranje lokacija
+
         $locations = Location::factory(5)->create();
         $this->command->info('Seeded 5 locations.');
 
-        // Kreiranje dispatchera
         $dispatchers = Dispatcher::factory(10)->create();
         $this->command->info('Seeded 10 dispatchers.');
 
-        // Kreiranje managera i povezivanje s dispatcherima
         $managers = Manager::factory(8)->create()->each(function($manager) use ($dispatchers) {
             $assignedDispatchers = $dispatchers->random(rand(1, 3));
             $manager->dispatchers()->attach($assignedDispatchers->pluck('id'));

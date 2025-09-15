@@ -4,12 +4,10 @@ const mysql = require('mysql');
 const cors = require('cors'); 
 const app = express();
 
-// --- Middleware ---
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// --- Basic HTTP Authentication ---
 const basicAuth = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -25,7 +23,6 @@ const basicAuth = (req, res, next) => {
     const decoded = Buffer.from(credentials, 'base64').toString();
     const [username, password] = decoded.split(':');
 
-    // Testni account za demo
     if (username === 'demo' && password === 'demo123') {
         return next();
     }
@@ -33,15 +30,12 @@ const basicAuth = (req, res, next) => {
     return res.status(403).send('Forbidden');
 };
 
-// Dodaj Basic Auth za sve rute
 app.use(basicAuth);
 
-// --- Default route ---
 app.get('/', (req, res) => {
     res.send({ error: false, message: 'Node.js REST API for FSRE project with Basic Auth' });
 });
 
-// --- MySQL connection ---
 const dbConn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -54,9 +48,7 @@ dbConn.connect(err => {
     console.log('Connected to MySQL database.');
 });
 
-// ---------------------- MANAGERS ----------------------
 
-// Get all managers
 app.get('/managers', (req, res) => {
     dbConn.query(`
         SELECT managers.id, managers.name, locations.name AS location
@@ -68,7 +60,6 @@ app.get('/managers', (req, res) => {
     });
 });
 
-// Get manager by ID
 app.get('/manager/:id', (req, res) => {
     const id = req.params.id;
     dbConn.query(`
@@ -82,7 +73,6 @@ app.get('/manager/:id', (req, res) => {
     });
 });
 
-// Add new manager
 app.post('/manager', (req, res) => {
     const { name, location_id } = req.body;
     if (!name || !location_id) {
@@ -94,7 +84,7 @@ app.post('/manager', (req, res) => {
     });
 });
 
-// Update manager
+
 app.put('/manager/:id', (req, res) => {
     const id = req.params.id;
     const { name, location_id } = req.body;
@@ -107,7 +97,7 @@ app.put('/manager/:id', (req, res) => {
     });
 });
 
-// Delete manager
+
 app.delete('/manager/:id', (req, res) => {
     const id = req.params.id;
     dbConn.query('DELETE FROM managers WHERE id = ?', [id], (error, results) => {
@@ -116,7 +106,6 @@ app.delete('/manager/:id', (req, res) => {
     });
 });
 
-// ---------------------- DISPATCHERS ----------------------
 app.get('/dispatchers', (req, res) => {
     dbConn.query('SELECT * FROM dispatchers', (error, results) => {
         if (error) throw error;
@@ -163,7 +152,6 @@ app.delete('/dispatcher/:id', (req, res) => {
     });
 });
 
-// ---------------------- LOCATIONS ----------------------
 app.get('/locations', (req, res) => {
     dbConn.query('SELECT * FROM locations', (error, results) => {
         if (error) throw error;
@@ -210,7 +198,6 @@ app.delete('/location/:id', (req, res) => {
     });
 });
 
-// --- Start server ---
 app.listen(3000, () => {
     console.log('Node.js REST API running on port 3000 with Basic Auth');
 });

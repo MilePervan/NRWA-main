@@ -47,7 +47,6 @@ function searchLocations() {
     populateTable(filtered);
 }
 
-// Modal
 function openAddModal() {
     editingId = null;
     document.getElementById('modalTitle').innerText = 'Add Location';

@@ -22,13 +22,13 @@ class Users extends Authenticatable
         'remember_token',
     ];
 
-    // 1:1 relation with Dispatcher
+
     public function dispatcher()
     {
         return $this->hasOne(Dispatcher::class, 'user_id', 'id');
     }
 
-    // 1:1 relation with Manager
+
     public function manager()
     {
         return $this->hasOne(Manager::class, 'user_id', 'id');

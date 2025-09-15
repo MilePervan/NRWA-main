@@ -43,7 +43,6 @@ function filterTable() {
     populateTable(filtered);
 }
 
-// Modal
 function openAddModal() {
     editingManagerId = null;
     document.getElementById('modalTitle').textContent = 'Add Manager';

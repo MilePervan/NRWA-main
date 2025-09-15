@@ -25,6 +25,6 @@ class GoogleController extends Controller
 
         Auth::login($user, true);
 
-        return redirect('/managers/index.html'); // ili tvoja CRUD stranica
+        return redirect('/managers/index.html'); 
     }
 }
